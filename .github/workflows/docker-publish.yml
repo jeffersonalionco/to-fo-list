@@ -1,0 +1,25 @@
+name: Docker build  e push do github actions
+on:
+push:
+branches:
+- master
+
+jobs:
+build:
+runs-on: ubuntu-latest
+
+steps:
+  - name: Checkout do código
+    uses: actions/checkout@v4
+
+  - name: Login no Docker Hub
+    uses: docker/login-action@v3
+    with:
+      username: \${{ secrets.DOCKERHUB_USERNAME  }}
+      password: \${{ secrets.DOCKERHUB_TOKEN }}
+
+  - name: Build da imagem
+    run: docker build -t jeffersonalonco/to-do-list:v1 .
+
+  - name: Push da imagem
+    run: docker push jeffersonalonco/to-do-list:v1
