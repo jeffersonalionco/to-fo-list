@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
   const [tarefas, setTarefas] = useState([]);
@@ -35,11 +36,11 @@ function App() {
     setTarefasConcluidas((prev) => [...prev, tarefa]);
   };
   return (
-    <div>
-      <h1>To-Do List</h1>
-      <div>
+    <div className="container">
+      <h1 className="title">To-Do List</h1>
+      <div className="container1">
         <h1>TAREFAS A FAZER</h1>
-        <div>
+        <div className="container3">
           <input
             value={novaTarefa}
             onChange={(e) => setNovaTarefa(e.target.value)}
@@ -55,7 +56,7 @@ function App() {
           ))}
         </ul>
       </div>
-      <div>
+      <div className="container2">
         <h1>TAREFAS COMPLETAS</h1>
         <ul>
           {tarefasConcluidas.map((tarefa) => (
